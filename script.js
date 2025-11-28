@@ -51,14 +51,30 @@ function initParallax() {
     const phoneMockup = document.querySelector('.phone-frame');
     
     if (hero && phoneMockup) {
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * 0.5;
+        // Only apply parallax on desktop for better mobile performance
+        const isDesktop = window.innerWidth > 768;
+        
+        if (isDesktop) {
+            let ticking = false;
             
-            if (scrolled < hero.offsetHeight) {
-                phoneMockup.style.transform = `translateY(${rate}px)`;
-            }
-        });
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        const scrolled = window.pageYOffset;
+                        const rate = scrolled * 0.3; // Reduced for smoother effect
+                        
+                        if (scrolled < hero.offsetHeight) {
+                            phoneMockup.style.transform = `translateY(${rate}px) scale(1)`;
+                        } else {
+                            phoneMockup.style.transform = 'translateY(0) scale(1)';
+                        }
+                        
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+        }
     }
 }
 
@@ -188,5 +204,176 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 2000 + (index * 300));
         });
     }
+    
+    // Make phone mockup interactive and responsive
+    initPhoneMockupInteractions();
+    
+    // Update phone time to show current time
+    function updatePhoneTime() {
+        const timeElement = document.getElementById('phone-time');
+        if (timeElement) {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            timeElement.textContent = `${hours}:${minutes}`;
+        }
+    }
+    
+    // Update phone battery level
+    function updatePhoneBattery() {
+        const batteryFill = document.getElementById('battery-fill');
+        const batteryIcon = document.getElementById('phone-battery');
+        
+        if (batteryFill && batteryIcon) {
+            let batteryLevel = 85; // Default fallback
+            
+            // Try to get actual battery level if Battery API is available
+            if (navigator.getBattery) {
+                navigator.getBattery().then(function(battery) {
+                    batteryLevel = Math.round(battery.level * 100);
+                    updateBatteryDisplay(batteryLevel, batteryFill, batteryIcon);
+                }).catch(function() {
+                    updateBatteryDisplay(batteryLevel, batteryFill, batteryIcon);
+                });
+            } else {
+                updateBatteryDisplay(batteryLevel, batteryFill, batteryIcon);
+            }
+        }
+    }
+    
+    function updateBatteryDisplay(level, fillElement, iconElement) {
+        // Calculate width based on battery level (battery width is 18, starting at x=3.5, so fill width is 15)
+        const maxFillWidth = 15;
+        const fillWidth = (level / 100) * maxFillWidth;
+        fillElement.setAttribute('width', Math.max(0, Math.min(fillWidth, maxFillWidth)));
+        
+        // Change color based on battery level
+        const svg = iconElement.querySelector('svg');
+        if (level > 50) {
+            svg.style.color = 'var(--text-white)';
+        } else if (level > 20) {
+            svg.style.color = '#FFA500'; // Orange for low battery
+        } else {
+            svg.style.color = '#FF4444'; // Red for very low battery
+        }
+    }
+    
+    // Update time immediately and then every minute
+    updatePhoneTime();
+    setInterval(updatePhoneTime, 60000); // Update every minute
+    
+    // Update battery level on page load
+    updatePhoneBattery();
+    
+    // Update battery level every 30 seconds if Battery API is available
+    if (navigator.getBattery) {
+        setInterval(updatePhoneBattery, 30000); // Update every 30 seconds
+    }
 });
+
+// Phone mockup interactions and dynamic features
+function initPhoneMockupInteractions() {
+    const phoneFrame = document.querySelector('.phone-frame');
+    const phoneScreen = document.querySelector('.phone-screen');
+    
+    if (!phoneFrame || !phoneScreen) return;
+    
+    // Add touch-friendly interactions
+    let isTouching = false;
+    let touchStartY = 0;
+    let scrollStartY = 0;
+    
+    // Touch events for mobile
+    phoneScreen.addEventListener('touchstart', function(e) {
+        isTouching = true;
+        touchStartY = e.touches[0].clientY;
+        scrollStartY = phoneScreen.scrollTop;
+        phoneScreen.style.transition = 'none';
+    }, { passive: true });
+    
+    phoneScreen.addEventListener('touchmove', function(e) {
+        if (!isTouching) return;
+        const touchY = e.touches[0].clientY;
+        const deltaY = touchStartY - touchY;
+        phoneScreen.scrollTop = scrollStartY + deltaY;
+    }, { passive: true });
+    
+    phoneScreen.addEventListener('touchend', function() {
+        isTouching = false;
+        phoneScreen.style.transition = '';
+    }, { passive: true });
+    
+    // Add hover effect for desktop (only if not scrolling)
+    if (window.matchMedia('(hover: hover)').matches) {
+        let isScrolling = false;
+        
+        window.addEventListener('scroll', () => {
+            isScrolling = true;
+            clearTimeout(window.scrollTimeout);
+            window.scrollTimeout = setTimeout(() => {
+                isScrolling = false;
+            }, 150);
+        }, { passive: true });
+        
+        phoneFrame.addEventListener('mouseenter', function() {
+            if (!isScrolling) {
+                phoneFrame.style.transform = 'scale(1.02) translateY(-5px)';
+            }
+        });
+        
+        phoneFrame.addEventListener('mouseleave', function() {
+            if (!isScrolling) {
+                phoneFrame.style.transform = 'scale(1) translateY(0)';
+            }
+        });
+    }
+    
+    // Add click/tap animation with haptic feedback on mobile
+    phoneFrame.addEventListener('click', function() {
+        phoneFrame.style.transform = 'scale(0.98)';
+        
+        // Haptic feedback on supported devices
+        if (navigator.vibrate) {
+            navigator.vibrate(10);
+        }
+        
+        setTimeout(() => {
+            phoneFrame.style.transform = '';
+        }, 150);
+    });
+    
+    // Dynamic content updates based on viewport
+    function updatePhoneContentForViewport() {
+        const isMobile = window.innerWidth <= 768;
+        const phoneContent = document.querySelector('.phone-content');
+        
+        if (phoneContent) {
+            // Adjust content spacing on mobile
+            if (isMobile) {
+                phoneContent.style.padding = '16px 12px';
+            } else {
+                phoneContent.style.padding = '24px';
+            }
+        }
+    }
+    
+    // Update on resize
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(updatePhoneContentForViewport, 250);
+    });
+    
+    // Initial update
+    updatePhoneContentForViewport();
+    
+    // Add smooth scroll behavior to phone content
+    const phoneContent = document.querySelector('.phone-content');
+    if (phoneContent) {
+        phoneContent.style.scrollBehavior = 'smooth';
+    }
+    
+    // Note: Parallax is already handled by initParallax() function
+    // This ensures phone mockup works well with existing parallax
+}
 
