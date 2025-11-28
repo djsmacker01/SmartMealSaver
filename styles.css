@@ -645,6 +645,15 @@ section {
 
 .comparison-side .icon {
     font-size: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.comparison-side .icon svg {
+    width: 32px;
+    height: 32px;
+    color: var(--accent-cyan);
 }
 
 .comparison-side .price {
