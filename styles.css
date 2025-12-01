@@ -139,6 +139,69 @@ body::before {
     }
 }
 
+@keyframes imageZoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes imageSlideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-80px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes imageSlideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(80px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes imageFloat {
+    0%, 100% {
+        transform: translateY(0px) scale(1);
+    }
+    50% {
+        transform: translateY(-15px) scale(1.02);
+    }
+}
+
+@keyframes imageGlow {
+    0%, 100% {
+        box-shadow: 0 20px 60px rgba(107, 70, 193, 0.3);
+    }
+    50% {
+        box-shadow: 0 25px 80px rgba(107, 70, 193, 0.5), 0 0 40px rgba(255, 215, 0, 0.2);
+    }
+}
+
+@keyframes imageRotate {
+    0%, 100% {
+        transform: rotate(0deg) scale(1);
+    }
+    25% {
+        transform: rotate(1deg) scale(1.01);
+    }
+    75% {
+        transform: rotate(-1deg) scale(1.01);
+    }
+}
+
 /* Animation Classes */
 .animate-on-scroll {
     opacity: 0;
@@ -350,7 +413,40 @@ body::before {
     height: auto;
     border-radius: 20px;
     box-shadow: 0 20px 60px rgba(107, 70, 193, 0.3);
-    animation: fadeInUp 1.2s ease-out 0.9s both;
+    animation: imageZoomIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both, imageFloat 6s ease-in-out 2s infinite;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    will-change: transform;
+}
+
+.hero-main-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-main-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.hero-main-image:hover {
+    transform: scale(1.05) translateY(-10px);
+    box-shadow: 0 30px 80px rgba(107, 70, 193, 0.5), 0 0 50px rgba(255, 215, 0, 0.3);
+    animation: imageFloat 3s ease-in-out infinite;
+}
+
+.hero-main-image:hover::before {
+    left: 100%;
 }
 
 .hero-title {
@@ -651,6 +747,39 @@ section {
     height: auto;
     border-radius: 20px;
     box-shadow: 0 20px 60px rgba(107, 70, 193, 0.3);
+    opacity: 0;
+    transform: translateX(80px) scale(0.95);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    will-change: transform, opacity;
+}
+
+.section-image.animated {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    animation: imageSlideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.section-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.section-image:hover {
+    transform: scale(1.08) translateY(-15px) rotate(2deg);
+    box-shadow: 0 30px 90px rgba(107, 70, 193, 0.5), 0 0 60px rgba(255, 215, 0, 0.25);
+}
+
+.section-image:hover::after {
+    opacity: 1;
 }
 
 /* How It Works */
@@ -715,6 +844,55 @@ section {
     height: auto;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(107, 70, 193, 0.2);
+    opacity: 0;
+    transform: scale(0.85) translateY(40px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    will-change: transform, opacity;
+}
+
+.step-image.animated {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    animation: imageZoomIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.step:nth-child(1) .step-image.animated {
+    animation-delay: 0.1s;
+}
+
+.step:nth-child(2) .step-image.animated {
+    animation-delay: 0.3s;
+}
+
+.step:nth-child(3) .step-image.animated {
+    animation-delay: 0.5s;
+}
+
+.step-image::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.3), transparent);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: 1;
+}
+
+.step-image:hover {
+    transform: scale(1.1) translateY(-10px);
+    box-shadow: 0 20px 50px rgba(107, 70, 193, 0.4), 0 0 40px rgba(255, 215, 0, 0.2);
+    animation: imageFloat 2s ease-in-out infinite;
+}
+
+.step-image:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
 .phone-mini {
@@ -840,6 +1018,67 @@ section {
     border-radius: 12px;
     margin-bottom: 24px;
     box-shadow: 0 4px 15px rgba(107, 70, 193, 0.2);
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    will-change: transform, opacity;
+}
+
+.feature-image.animated {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    animation: imageZoomIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.feature-card:nth-child(1) .feature-image.animated {
+    animation-delay: 0.1s;
+}
+
+.feature-card:nth-child(2) .feature-image.animated {
+    animation-delay: 0.2s;
+}
+
+.feature-card:nth-child(3) .feature-image.animated {
+    animation-delay: 0.3s;
+}
+
+.feature-card:nth-child(4) .feature-image.animated {
+    animation-delay: 0.4s;
+}
+
+.feature-card:nth-child(5) .feature-image.animated {
+    animation-delay: 0.5s;
+}
+
+.feature-card:nth-child(6) .feature-image.animated {
+    animation-delay: 0.6s;
+}
+
+.feature-card:nth-child(7) .feature-image.animated {
+    animation-delay: 0.7s;
+}
+
+.feature-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, transparent 0%, rgba(107, 70, 193, 0.2) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.feature-card:hover .feature-image {
+    transform: scale(1.08) translateY(-5px);
+    box-shadow: 0 12px 35px rgba(107, 70, 193, 0.4), 0 0 30px rgba(255, 215, 0, 0.15);
+}
+
+.feature-card:hover .feature-image::after {
+    opacity: 1;
 }
 
 .feature-card.animated {
