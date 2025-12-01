@@ -1072,14 +1072,16 @@ section {
 
 .waitlist-modal-content {
     position: relative;
-    background-color: var(--bg-dark);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    padding: 48px;
-    max-width: 500px;
+    background-color: #F8F8F8;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    max-width: 800px;
     width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
     z-index: 1001;
-    box-shadow: 0 20px 60px rgba(107, 70, 193, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     animation: modalSlideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -1098,13 +1100,20 @@ section {
     animation: fadeIn 0.3s ease-out;
 }
 
+.waitlist-modal-header {
+    background-color: #3CB371;
+    padding: 40px 48px;
+    text-align: center;
+    position: relative;
+}
+
 .waitlist-modal-close {
     position: absolute;
     top: 20px;
     right: 20px;
     background: none;
     border: none;
-    color: var(--text-white);
+    color: #FFFFFF;
     font-size: 32px;
     cursor: pointer;
     width: 40px;
@@ -1115,31 +1124,151 @@ section {
     border-radius: 50%;
     transition: all 0.3s ease;
     line-height: 1;
+    z-index: 1002;
 }
 
 .waitlist-modal-close:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: var(--yellow);
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+}
+
+.waitlist-modal-brand {
+    font-size: 48px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 12px 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.waitlist-modal-tagline {
+    font-size: 18px;
+    color: #FFFFFF;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.waitlist-modal-body {
+    padding: 48px;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 .waitlist-modal-title {
-    font-size: 32px;
+    font-size: 48px;
     font-weight: 700;
-    margin-bottom: 16px;
-    text-align: center;
-    color: var(--text-white);
+    margin-bottom: 24px;
+    text-align: left;
+    color: #333333;
 }
 
 .waitlist-modal-description {
     font-size: 16px;
-    color: var(--text-gray);
-    text-align: center;
-    margin-bottom: 32px;
+    color: #555555;
+    text-align: left;
+    margin-bottom: 40px;
     line-height: 1.6;
+}
+
+.waitlist-features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.waitlist-feature-card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #EEEEEE;
+}
+
+.waitlist-feature-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #3CB371;
+    margin-bottom: 12px;
+}
+
+.waitlist-feature-description {
+    font-size: 14px;
+    color: #555555;
+    line-height: 1.6;
+    margin: 0;
 }
 
 .waitlist-modal-content .waitlist-form {
     margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.waitlist-email-label {
+    font-size: 14px;
+    color: #333333;
+    font-weight: 500;
+    text-align: left;
+}
+
+.waitlist-email-input {
+    background-color: #EEEEEE;
+    border: 1px solid #CCCCCC;
+    color: #333333;
+    padding: 16px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+    transition: border-color 0.3s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.waitlist-email-input:focus {
+    outline: none;
+    border-color: #3CB371;
+    background-color: #FFFFFF;
+}
+
+.waitlist-email-input::placeholder {
+    color: #999999;
+}
+
+.waitlist-submit-btn {
+    background-color: #3CB371;
+    border: none;
+    color: #FFFFFF;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.waitlist-submit-btn:hover {
+    background-color: #2E8B57;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(60, 179, 113, 0.3);
+}
+
+.waitlist-submit-btn:active {
+    transform: translateY(0);
+}
+
+.waitlist-modal-footer {
+    margin-top: 32px;
+    padding-top: 24px;
+    text-align: center;
+    border-top: 1px solid #EEEEEE;
+}
+
+.waitlist-modal-footer p {
+    font-size: 12px;
+    color: #AAAAAA;
+    margin: 0;
 }
 
 /* FAQ */
@@ -1366,6 +1495,53 @@ section {
 
     .waitlist-form {
         flex-direction: column;
+    }
+
+    .waitlist-modal-content {
+        max-width: 95%;
+        padding: 0;
+    }
+
+    .waitlist-modal-header {
+        padding: 32px 24px;
+        padding-top: 50px;
+    }
+
+    .waitlist-modal-brand {
+        font-size: 32px;
+    }
+
+    .waitlist-modal-tagline {
+        font-size: 16px;
+    }
+
+    .waitlist-modal-body {
+        padding: 32px 24px;
+    }
+
+    .waitlist-modal-title {
+        font-size: 32px;
+    }
+
+    .waitlist-modal-description {
+        font-size: 14px;
+    }
+
+    .waitlist-features-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .waitlist-feature-card {
+        padding: 20px;
+    }
+
+    .waitlist-feature-title {
+        font-size: 18px;
+    }
+
+    .waitlist-feature-description {
+        font-size: 13px;
     }
 }
 

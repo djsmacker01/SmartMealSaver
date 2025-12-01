@@ -327,14 +327,48 @@
     <div class="waitlist-modal" id="waitlistModal">
         <div class="waitlist-modal-overlay"></div>
         <div class="waitlist-modal-content">
-            <button class="waitlist-modal-close" aria-label="Close">&times;</button>
-            <h2 class="waitlist-modal-title">Join the early access waitlist</h2>
-            <p class="waitlist-modal-description">Be among the first to experience SmartMealSaver when we launch our
-                beta across UK universities.</p>
-            <form class="waitlist-form">
-                <input type="email" placeholder="Enter your email" class="email-input" required>
-                <button type="submit" class="btn-primary">Join Waitlist</button>
-            </form>
+            <div class="waitlist-modal-header">
+                <button class="waitlist-modal-close" aria-label="Close">&times;</button>
+                <h1 class="waitlist-modal-brand">SmartMealSaver</h1>
+                <p class="waitlist-modal-tagline">Eat smarter. Spend less. Live better.</p>
+            </div>
+            <div class="waitlist-modal-body">
+                <h2 class="waitlist-modal-title">Join the Waitlist</h2>
+                <p class="waitlist-modal-description">Be the first to experience your personal food twin. SmartMealSaver
+                    compares live takeaway and grocery prices, learns your tastes and budget, and connects you with Food
+                    Buddies to cook or order together. Sign up today for early access and exclusive rewards.</p>
+                <div class="waitlist-features-grid">
+                    <div class="waitlist-feature-card">
+                        <h3 class="waitlist-feature-title">Real‑Time Prices</h3>
+                        <p class="waitlist-feature-description">See the cheapest takeaway and grocery options side by
+                            side, including delivery fees, deals and calorie counts.</p>
+                    </div>
+                    <div class="waitlist-feature-card">
+                        <h3 class="waitlist-feature-title">AI Personalisation</h3>
+                        <p class="waitlist-feature-description">Natural‑language search understands cravings, budgets
+                            and dietary needs. The more you use it, the smarter it gets.</p>
+                    </div>
+                    <div class="waitlist-feature-card">
+                        <h3 class="waitlist-feature-title">Food Buddy Community</h3>
+                        <p class="waitlist-feature-description">Match with friends and neighbours to cook together,
+                            share ingredients and split the bill. Save money while making new connections.</p>
+                    </div>
+                    <div class="waitlist-feature-card">
+                        <h3 class="waitlist-feature-title">Healthy & Sustainable</h3>
+                        <p class="waitlist-feature-description">Track calories and nutrition, reduce food waste by using
+                            what's in your pantry and join challenges for rewards.</p>
+                    </div>
+                </div>
+                <form class="waitlist-form">
+                    <label for="waitlist-email" class="waitlist-email-label">Email address</label>
+                    <input type="email" id="waitlist-email" placeholder="you@example.com" class="waitlist-email-input"
+                        required>
+                    <button type="submit" class="waitlist-submit-btn">Join the Waitlist</button>
+                </form>
+                <div class="waitlist-modal-footer">
+                    <p>© 2025 SmartMealSaver. All rights reserved.</p>
+                </div>
+            </div>
         </div>
     </div>
 
