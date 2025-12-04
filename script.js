@@ -43,26 +43,12 @@ function initScrollAnimations() {
     document.querySelectorAll('.faq-item').forEach(item => {
         observer.observe(item);
     });
-
-    // Observe images for scroll animations
-    document.querySelectorAll('.section-image').forEach(image => {
-        observer.observe(image);
-    });
-
-    document.querySelectorAll('.step-image').forEach(image => {
-        observer.observe(image);
-    });
-
-    document.querySelectorAll('.feature-image').forEach(image => {
-        observer.observe(image);
-    });
 }
 
-// Parallax effect for hero section and images
+// Parallax effect for hero section
 function initParallax() {
     const hero = document.querySelector('.hero');
     const phoneMockup = document.querySelector('.phone-frame');
-    const heroImage = document.querySelector('.hero-main-image');
     
     if (hero && phoneMockup) {
         // Only apply parallax on desktop for better mobile performance
@@ -79,17 +65,8 @@ function initParallax() {
                         
                         if (scrolled < hero.offsetHeight) {
                             phoneMockup.style.transform = `translateY(${rate}px) scale(1)`;
-                            
-                            // Parallax for hero image
-                            if (heroImage) {
-                                const imageRate = scrolled * 0.15;
-                                heroImage.style.transform = `translateY(${imageRate}px) scale(1)`;
-                            }
                         } else {
                             phoneMockup.style.transform = 'translateY(0) scale(1)';
-                            if (heroImage) {
-                                heroImage.style.transform = 'translateY(0) scale(1)';
-                            }
                         }
                         
                         ticking = false;
@@ -98,34 +75,6 @@ function initParallax() {
                 }
             }, { passive: true });
         }
-    }
-
-    // Parallax for section images
-    const sectionImages = document.querySelectorAll('.section-image');
-    if (sectionImages.length > 0 && window.innerWidth > 768) {
-        let ticking = false;
-        
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    sectionImages.forEach(image => {
-                        const rect = image.getBoundingClientRect();
-                        const windowHeight = window.innerHeight;
-                        
-                        // Only apply parallax when image is in viewport
-                        if (rect.top < windowHeight && rect.bottom > 0) {
-                            const scrolled = window.pageYOffset;
-                            const imageTop = image.offsetTop;
-                            const imageRate = (scrolled - imageTop + windowHeight) * 0.1;
-                            image.style.transform = `translateY(${imageRate}px) scale(1)`;
-                        }
-                    });
-                    
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        }, { passive: true });
     }
 }
 
