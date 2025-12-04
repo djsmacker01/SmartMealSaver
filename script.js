@@ -34,6 +34,21 @@ function initScrollAnimations() {
         observer.observe(card);
     });
 
+    // Observe showcase items
+    document.querySelectorAll('.showcase-item').forEach(item => {
+        observer.observe(item);
+    });
+
+    // Observe step visuals for image animations
+    document.querySelectorAll('.step-visual').forEach(visual => {
+        observer.observe(visual);
+    });
+
+    // Observe floating emojis
+    document.querySelectorAll('.floating-emoji').forEach(emoji => {
+        observer.observe(emoji);
+    });
+
     // Observe audience cards
     document.querySelectorAll('.audience-card').forEach(card => {
         observer.observe(card);
