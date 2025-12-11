@@ -552,8 +552,8 @@ body::before {
 
 /* Image container for direct image display */
 .hero-phone-mockup .image-container {
-    max-width: 450px;
-    max-height: 900px;
+    max-width: 850px;
+    max-height: 1700px;
     width: auto;
     height: auto;
     background: transparent;
@@ -564,8 +564,8 @@ body::before {
 .phone-screenshot {
     width: 100%;
     height: auto;
-    max-width: 450px;
-    max-height: 900px;
+    max-width: 850px;
+    max-height: 1700px;
     object-fit: contain;
     display: block;
     opacity: 0;
@@ -2477,24 +2477,25 @@ section {
     }
 
     .hero-content {
-        flex-direction: column;
-        gap: 40px;
-        text-align: center;
+        flex-direction: row;
+        gap: 30px;
+        align-items: center;
     }
 
     .hero-text {
-        text-align: center;
+        text-align: left;
+        flex: 1;
     }
 
     .hero-title {
-        font-size: 40px;
+        font-size: 32px;
         line-height: 1.2;
     }
 
     .hero-subtitle {
-        font-size: 18px;
-        padding: 0 16px;
-        margin: 0 auto 40px;
+        font-size: 16px;
+        padding: 0;
+        margin: 0 0 30px 0;
     }
 
     .section-title {
@@ -2503,7 +2504,21 @@ section {
 
     .hero-phone-mockup {
         margin-top: 0;
-        padding: 0 16px;
+        padding: 0;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-phone-mockup .image-container {
+        max-width: 450px;
+        max-height: 900px;
+    }
+
+    .hero-phone-mockup .phone-screenshot {
+        max-width: 450px;
+        max-height: 900px;
     }
 
     .phone-frame {
@@ -2675,16 +2690,31 @@ section {
         font-size: 13px;
     }
 
+    .hero-content {
+        gap: 20px;
+    }
+
     .hero-title {
-        font-size: 32px;
+        font-size: 28px;
     }
 
     .hero-subtitle {
-        font-size: 16px;
+        font-size: 14px;
+        margin: 0 0 20px 0;
     }
 
     .hero-phone-mockup {
         margin-top: 0;
+    }
+
+    .hero-phone-mockup .image-container {
+        max-width: 320px;
+        max-height: 640px;
+    }
+
+    .hero-phone-mockup .phone-screenshot {
+        max-width: 320px;
+        max-height: 640px;
     }
 
     .phone-frame {
