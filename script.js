@@ -148,6 +148,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Open modal when "Contact us" link is clicked
+    const contactUsLink = document.querySelector('.contact-us-link');
+    if (contactUsLink) {
+        contactUsLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            waitlistModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+    }
+    
     // Close modal when close button is clicked
     if (closeModalButton) {
         closeModalButton.addEventListener('click', function() {
