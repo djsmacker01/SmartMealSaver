@@ -552,8 +552,8 @@ body::before {
 
 /* Image container for direct image display */
 .hero-phone-mockup .image-container {
-    max-width: 320px;
-    max-height: 640px;
+    max-width: 450px;
+    max-height: 900px;
     width: auto;
     height: auto;
     background: transparent;
@@ -564,8 +564,8 @@ body::before {
 .phone-screenshot {
     width: 100%;
     height: auto;
-    max-width: 320px;
-    max-height: 640px;
+    max-width: 450px;
+    max-height: 900px;
     object-fit: contain;
     display: block;
     opacity: 0;
