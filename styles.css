@@ -461,13 +461,25 @@ body::before {
 /* Hero Section */
 .hero {
     padding: 80px 0 120px;
-    text-align: center;
     position: relative;
     overflow: hidden;
 }
 
 .hero .container {
     position: relative;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-text {
+    flex: 1;
+    text-align: left;
 }
 
 .hero-title {
@@ -491,12 +503,12 @@ body::before {
     font-size: 20px;
     color: var(--text-gray);
     max-width: 700px;
-    margin: 0 auto 40px;
+    margin: 0 0 40px 0;
     line-height: 1.6;
 }
 
 .hero-cta {
-    margin-bottom: 60px;
+    margin-bottom: 0;
 }
 
 .hero-cta-text {
@@ -506,9 +518,10 @@ body::before {
 }
 
 .hero-phone-mockup {
+    flex: 1;
     display: flex;
     justify-content: center;
-    margin-top: 80px;
+    align-items: center;
     animation: fadeInUp 1.2s ease-out 0.9s both;
     padding: 0 20px;
 }
@@ -2463,6 +2476,16 @@ section {
         padding: 60px 0 80px;
     }
 
+    .hero-content {
+        flex-direction: column;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .hero-text {
+        text-align: center;
+    }
+
     .hero-title {
         font-size: 40px;
         line-height: 1.2;
@@ -2471,6 +2494,7 @@ section {
     .hero-subtitle {
         font-size: 18px;
         padding: 0 16px;
+        margin: 0 auto 40px;
     }
 
     .section-title {
@@ -2478,7 +2502,7 @@ section {
     }
 
     .hero-phone-mockup {
-        margin-top: 40px;
+        margin-top: 0;
         padding: 0 16px;
     }
 
@@ -2660,7 +2684,7 @@ section {
     }
 
     .hero-phone-mockup {
-        margin-top: 30px;
+        margin-top: 0;
     }
 
     .phone-frame {
