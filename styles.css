@@ -473,12 +473,12 @@ body::before {
     display: flex;
     align-items: center;
     gap: 60px;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
 .hero-text {
-    flex: 1;
+    flex: 0.8;
     text-align: left;
 }
 
@@ -518,7 +518,7 @@ body::before {
 }
 
 .hero-phone-mockup {
-    flex: 1.2;
+    flex: 1.5;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2478,13 +2478,14 @@ section {
 
     .hero-content {
         flex-direction: row;
-        gap: 30px;
+        gap: 20px;
         align-items: center;
+        max-width: 100%;
     }
 
     .hero-text {
         text-align: left;
-        flex: 1;
+        flex: 0.7;
     }
 
     .hero-title {
@@ -2505,20 +2506,20 @@ section {
     .hero-phone-mockup {
         margin-top: 0;
         padding: 0;
-        flex: 1;
+        flex: 1.3;
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
     .hero-phone-mockup .image-container {
-        max-width: 550px;
-        max-height: 1100px;
+        max-width: 650px;
+        max-height: 1300px;
     }
 
     .hero-phone-mockup .phone-screenshot {
-        max-width: 550px;
-        max-height: 1100px;
+        max-width: 650px;
+        max-height: 1300px;
     }
 
     .phone-frame {
@@ -2691,7 +2692,11 @@ section {
     }
 
     .hero-content {
-        gap: 20px;
+        gap: 15px;
+    }
+
+    .hero-text {
+        flex: 0.6;
     }
 
     .hero-title {
@@ -2705,16 +2710,17 @@ section {
 
     .hero-phone-mockup {
         margin-top: 0;
+        flex: 1.4;
     }
 
     .hero-phone-mockup .image-container {
-        max-width: 400px;
-        max-height: 800px;
+        max-width: 500px;
+        max-height: 1000px;
     }
 
     .hero-phone-mockup .phone-screenshot {
-        max-width: 400px;
-        max-height: 800px;
+        max-width: 500px;
+        max-height: 1000px;
     }
 
     .phone-frame {
