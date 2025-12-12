@@ -2620,19 +2620,23 @@ section {
         display: flex;
         justify-content: center;
         align-items: center;
-        flex: 1.4;
+        flex: 2.2;
+    }
+
+    .hero-text-wrapper {
+        flex: 0.35;
     }
 
     .hero-phone-mockup .image-container {
-        max-width: 350px;
-        max-height: 700px;
+        max-width: 600px;
+        max-height: 1200px;
         width: auto;
         height: auto;
     }
 
     .hero-phone-mockup .phone-screenshot {
-        max-width: 350px;
-        max-height: 700px;
+        max-width: 600px;
+        max-height: 1200px;
         width: 100%;
         height: auto;
     }
@@ -2840,19 +2844,23 @@ section {
 
     .hero-phone-mockup {
         grid-column: 2;
-        flex: 1.5;
+        flex: 2.5;
+    }
+
+    .hero-text-wrapper {
+        flex: 0.3;
     }
 
     .hero-phone-mockup .image-container {
-        max-width: 300px;
-        max-height: 600px;
+        max-width: 500px;
+        max-height: 1000px;
         width: auto;
         height: auto;
     }
 
     .hero-phone-mockup .phone-screenshot {
-        max-width: 300px;
-        max-height: 600px;
+        max-width: 500px;
+        max-height: 1000px;
         width: 100%;
         height: auto;
     }
