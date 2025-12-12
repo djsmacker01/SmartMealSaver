@@ -2624,17 +2624,17 @@ section {
     }
 
     .hero-phone-mockup .image-container {
-        max-width: 100%;
-        max-height: 90vh;
-        width: 100%;
-        min-width: 280px;
+        max-width: 350px;
+        max-height: 700px;
+        width: auto;
+        height: auto;
     }
 
     .hero-phone-mockup .phone-screenshot {
-        max-width: 100%;
-        max-height: 90vh;
+        max-width: 350px;
+        max-height: 700px;
         width: 100%;
-        min-width: 280px;
+        height: auto;
     }
 
     .section-title {
@@ -2844,17 +2844,17 @@ section {
     }
 
     .hero-phone-mockup .image-container {
-        max-width: 100%;
-        max-height: 85vh;
-        width: 100%;
-        min-width: 220px;
+        max-width: 300px;
+        max-height: 600px;
+        width: auto;
+        height: auto;
     }
 
     .hero-phone-mockup .phone-screenshot {
-        max-width: 100%;
-        max-height: 85vh;
+        max-width: 300px;
+        max-height: 600px;
         width: 100%;
-        min-width: 220px;
+        height: auto;
     }
 
     .phone-frame {
