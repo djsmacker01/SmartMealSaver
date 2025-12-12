@@ -470,49 +470,49 @@ body::before {
 }
 
 .hero-content {
-    display: flex;
-    align-items: center;
-    gap: 60px;
-    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto auto;
+    gap: 40px 40px;
+    max-width: 1400px;
     margin: 0 auto;
-}
-
-.hero-text {
-    flex: 1;
-    text-align: left;
+    align-items: start;
 }
 
 .hero-title {
-    font-size: 64px;
+    grid-column: 1 / -1;
+    grid-row: 1;
+    font-size: clamp(32px, 5vw, 64px);
     font-weight: 700;
-    margin-bottom: 24px;
+    margin-bottom: 0;
     line-height: 1.2;
     color: var(--yellow);
     animation: fadeInUp 1s ease-out 0.3s both;
-}
-
-.hero-title .mobile-break {
-    display: inline;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    text-align: center;
 }
 
 .hero-subtitle {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 24px;
+    color: var(--text-gray);
+    max-width: 1000px;
+    margin: 0 0 16px 0;
+    line-height: 1.6;
     animation: fadeInUp 1s ease-out 0.5s both;
 }
 
 .hero-cta {
+    grid-column: 1;
+    grid-row: 3;
+    margin: 0;
+    padding: 0;
     animation: fadeInUp 1s ease-out 0.7s both;
-}
-
-.hero-subtitle {
-    font-size: 20px;
-    color: var(--text-gray);
-    max-width: 700px;
-    margin: 0 0 40px 0;
-    line-height: 1.6;
-}
-
-.hero-cta {
-    margin-bottom: 0;
+    display: flex;
+    align-items: flex-start;
 }
 
 .hero-cta-text {
@@ -522,7 +522,8 @@ body::before {
 }
 
 .hero-phone-mockup {
-    flex: 1.2;
+    grid-column: 2;
+    grid-row: 2 / 4;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -875,8 +876,8 @@ section {
 }
 
 .step-visual .image-container {
-    max-width: 200px;
-    max-height: 400px;
+    max-width: 350px;
+    max-height: 700px;
     width: auto;
     height: auto;
     position: relative;
@@ -888,8 +889,8 @@ section {
 .step-image {
     width: 100%;
     height: auto;
-    max-width: 200px;
-    max-height: 400px;
+    max-width: 350px;
+    max-height: 700px;
     object-fit: contain;
     border-radius: 0;
     display: block;
@@ -1023,7 +1024,7 @@ section {
 
 .feature-card {
     background-color: var(--pink-light);
-    padding: 40px 32px;
+    padding: 48px 32px;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -1032,6 +1033,7 @@ section {
     opacity: 0;
     transform: translateY(30px) scale(0.95);
     animation: fadeInUp 0.6s ease-out forwards;
+    text-align: center;
 }
 
 .feature-card.animated {
@@ -1070,23 +1072,23 @@ section {
 }
 
 .feature-icon {
-    width: 64px;
-    height: 64px;
-    margin-bottom: 20px;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 24px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: rgba(255, 255, 255, 0.3);
-    border-radius: 16px;
+    border-radius: 18px;
     border: 1px solid rgba(255, 255, 255, 0.4);
     transition: all 0.3s ease;
 }
 
 .feature-icon svg {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     color: var(--purple-dark);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.3s ease;
 }
 
 .feature-card:hover .feature-icon {
@@ -1102,7 +1104,7 @@ section {
 }
 
 .feature-title {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 600;
     margin-bottom: 12px;
     color: var(--purple-dark);
@@ -1118,87 +1120,7 @@ section {
 }
 
 .feature-image {
-    width: 100%;
-    margin-bottom: 20px;
-    border-radius: 0;
-    overflow: visible;
-    box-shadow: none !important;
-    border: none;
-    outline: none;
-    position: relative;
-    opacity: 0;
-    transform: translateY(20px) scale(0.98);
-    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: transform, opacity;
-}
-
-.feature-image::after {
     display: none;
-}
-
-.feature-card:hover .feature-image::after {
-    opacity: 1;
-}
-
-.feature-card.animated .feature-image {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-}
-
-.feature-card:nth-child(1) .feature-image {
-    transition-delay: 0.1s;
-}
-
-.feature-card:nth-child(2) .feature-image {
-    transition-delay: 0.2s;
-}
-
-.feature-card:nth-child(3) .feature-image {
-    transition-delay: 0.3s;
-}
-
-.feature-card:nth-child(4) .feature-image {
-    transition-delay: 0.4s;
-}
-
-.feature-card:nth-child(5) .feature-image {
-    transition-delay: 0.5s;
-}
-
-.feature-card:nth-child(6) .feature-image {
-    transition-delay: 0.6s;
-}
-
-.feature-card:nth-child(7) .feature-image {
-    transition-delay: 0.7s;
-}
-
-.feature-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
-    filter: brightness(1) saturate(1) contrast(1.1);
-    will-change: transform, filter;
-    position: relative;
-    z-index: 0;
-    border: none;
-    outline: none;
-    box-shadow: none !important;
-    border-radius: 0;
-    /* Blend with landing page gradient background */
-    mix-blend-mode: normal;
-    background: transparent;
-}
-
-.feature-card:hover .feature-image {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: none;
-}
-
-.feature-card:hover .feature-image img {
-    transform: scale(1.08);
-    filter: brightness(1.15) saturate(1.2);
 }
 
 /* Who It's For */
@@ -2481,44 +2403,45 @@ section {
     }
 
     .hero-content {
-        flex-direction: row;
-        gap: 20px;
-        align-items: center;
-    }
-
-    .hero-text {
-        text-align: left;
-        flex: 0.6;
+        grid-template-columns: 1fr auto;
+        gap: 20px 10px;
     }
 
     .hero-title {
-        font-size: 26px;
-        line-height: 1.2;
+        font-size: 24px;
+        white-space: normal;
+        line-height: 1.3;
     }
 
     .hero-subtitle {
-        font-size: 13px;
+        grid-row: 2;
+        font-size: 12px;
         padding: 0;
+        padding-left: 0;
         margin: 0 0 15px 0;
+        margin-left: 0;
+        max-width: 200px;
+    }
+
+    .hero-cta {
+        grid-column: 1;
+        grid-row: 3;
+        margin-left: 0;
+        padding-left: 0;
     }
 
     .hero-cta .btn-primary {
-        padding: 10px 20px;
-        font-size: 14px;
-    }
-
-    .section-title {
-        font-size: 36px;
-    }
-
-    .hero-title .mobile-break {
-        display: block;
+        padding: 8px 16px;
+        font-size: 12px;
+        white-space: nowrap;
+        margin-left: 0;
     }
 
     .hero-phone-mockup {
+        grid-column: 2;
+        grid-row: 2 / 4;
         margin-top: 0;
         padding: 0;
-        flex: 1.6;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -2528,14 +2451,18 @@ section {
         max-width: 100%;
         max-height: 100vh;
         width: 100%;
-        min-width: 350px;
+        min-width: 200px;
     }
 
     .hero-phone-mockup .phone-screenshot {
         max-width: 100%;
         max-height: 100vh;
         width: 100%;
-        min-width: 350px;
+        min-width: 200px;
+    }
+
+    .section-title {
+        font-size: 36px;
     }
 
     .phone-frame {
@@ -2708,44 +2635,53 @@ section {
     }
 
     .hero-content {
-        gap: 15px;
-    }
-
-    .hero-text {
-        flex: 0.5;
+        grid-template-columns: 1fr auto;
+        gap: 15px 8px;
     }
 
     .hero-title {
-        font-size: 22px;
+        font-size: 20px;
+        white-space: normal;
+        line-height: 1.3;
     }
 
     .hero-subtitle {
-        font-size: 11px;
+        grid-row: 2;
+        font-size: 10px;
         margin: 0 0 12px 0;
+        max-width: 150px;
     }
 
-    .hero-cta .btn-primary {
-        padding: 8px 16px;
-        font-size: 12px;
+    .hero-cta {
+        grid-column: 1;
+        grid-row: 3;
+        margin-left: 0;
+        padding-left: 0;
     }
 
     .hero-phone-mockup {
-        margin-top: 0;
-        flex: 1.7;
+        grid-column: 2;
+        grid-row: 2 / 4;
+    }
+
+    .hero-cta .btn-primary {
+        padding: 6px 12px;
+        font-size: 11px;
+        margin-left: 0;
     }
 
     .hero-phone-mockup .image-container {
         max-width: 100%;
         max-height: 100vh;
         width: 100%;
-        min-width: 300px;
+        min-width: 180px;
     }
 
     .hero-phone-mockup .phone-screenshot {
         max-width: 100%;
         max-height: 100vh;
         width: 100%;
-        min-width: 300px;
+        min-width: 180px;
     }
 
     .phone-frame {
