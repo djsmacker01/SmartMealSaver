@@ -961,29 +961,7 @@ section {
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
-    background-image: url('images/bck1.jpeg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     padding: 60px 40px;
-    position: relative;
-    overflow: hidden;
-}
-
-.inputs-outputs::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(90deg, rgba(107, 70, 193, 0.75) 0%, rgba(236, 72, 153, 0.75) 50%, rgba(249, 115, 22, 0.75) 100%);
-    z-index: 0;
-}
-
-.inputs-outputs>* {
-    position: relative;
-    z-index: 1;
 }
 
 .io-column {
@@ -2847,6 +2825,7 @@ section {
         flex-direction: column;
     }
 
+
     .hero-text-wrapper {
         gap: 0;
         order: 1;
@@ -2898,7 +2877,7 @@ section {
         justify-content: center;
         order: 3;
         width: 100%;
-        margin-top: 20px;
+        margin-top: -30px;
         animation: fadeInUp 1s ease-out 0.5s both;
     }
 
@@ -3207,7 +3186,7 @@ section {
         justify-content: center;
         order: 3;
         width: 100%;
-        margin-top: 20px;
+        margin-top: -30px;
     }
 
     .hero-cta-mobile .btn-primary {
