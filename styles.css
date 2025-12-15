@@ -35,6 +35,75 @@ body {
     position: relative;
 }
 
+body.hiding-404 .main-content {
+    opacity: 0;
+    pointer-events: none;
+}
+
+body.showing-content .main-content {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.8s ease-in;
+}
+
+/* 404 Overlay */
+.error-404-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 1;
+    transition: opacity 0.8s ease-out;
+}
+
+.error-404-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.error-404-content {
+    text-align: center;
+    animation: errorPulse 2s ease-in-out infinite;
+}
+
+.error-404-title {
+    font-size: 120px;
+    font-weight: 900;
+    color: #ff4444;
+    margin: 0;
+    text-shadow: 0 0 30px rgba(255, 68, 68, 0.5);
+    line-height: 1;
+}
+
+.error-404-text {
+    font-size: 32px;
+    color: var(--text-white);
+    margin: 20px 0 10px;
+    font-weight: 600;
+}
+
+.error-404-subtext {
+    font-size: 24px;
+    color: var(--yellow);
+    margin: 10px 0;
+    font-weight: 500;
+}
+
+@keyframes errorPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
 body::before {
     content: '';
     position: fixed;
