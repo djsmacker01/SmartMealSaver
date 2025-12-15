@@ -58,6 +58,26 @@ function initScrollAnimations() {
     document.querySelectorAll('.faq-item').forEach(item => {
         observer.observe(item);
     });
+
+    // Observe tagline text
+    document.querySelectorAll('.tagline-text').forEach(tagline => {
+        observer.observe(tagline);
+    });
+
+    // Observe IO columns
+    document.querySelectorAll('.io-column').forEach(column => {
+        observer.observe(column);
+    });
+
+    // Observe testimonial cards
+    document.querySelectorAll('.testimonial-card').forEach(card => {
+        observer.observe(card);
+    });
+
+    // Observe stat box
+    document.querySelectorAll('.stat-box').forEach(box => {
+        observer.observe(box);
+    });
 }
 
 // Parallax effect for hero section
