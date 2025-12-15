@@ -953,6 +953,27 @@ section {
     transform: translateY(0);
 }
 
+.ai-twin-image {
+    margin: 60px auto;
+    max-width: 100%;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s;
+}
+
+.ai-twin-image.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.ai-twin-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
 .inputs-outputs {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -3071,6 +3092,10 @@ section {
         padding: 0 8px;
     }
 
+    .ai-twin-image {
+        margin: 40px auto;
+    }
+
     .inputs-outputs {
         grid-template-columns: 1fr;
         gap: 32px;
@@ -3268,6 +3293,10 @@ section {
         font-size: 16px;
         margin: 24px 12px;
         line-height: 1.4;
+    }
+
+    .ai-twin-image {
+        margin: 32px auto;
     }
 
     .inputs-outputs {

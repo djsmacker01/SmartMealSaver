@@ -64,6 +64,11 @@ function initScrollAnimations() {
         observer.observe(tagline);
     });
 
+    // Observe AI twin image
+    document.querySelectorAll('.ai-twin-image').forEach(image => {
+        observer.observe(image);
+    });
+
     // Observe IO columns
     document.querySelectorAll('.io-column').forEach(column => {
         observer.observe(column);
