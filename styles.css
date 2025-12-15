@@ -2585,12 +2585,17 @@ section {
     }
 
     .hero {
-        padding: 60px 0 80px;
+        padding: 40px 0 60px;
+    }
+
+    .hero .container {
+        padding: 0;
+        max-width: 100%;
     }
 
     .hero-content {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 30px;
         align-items: center;
         display: flex;
         flex-direction: column;
@@ -2601,6 +2606,7 @@ section {
         order: 1;
         width: 100%;
         text-align: center;
+        padding: 0 20px;
     }
 
     .hero-title {
@@ -2623,17 +2629,19 @@ section {
         justify-content: center;
         align-items: center;
         width: 100%;
+        overflow: visible;
     }
 
     .hero-phone-mockup .image-container {
-        max-width: 95vw;
+        max-width: 110vw;
         max-height: none;
         width: auto;
         height: auto;
+        margin: 0 -5vw;
     }
 
     .hero-phone-mockup .phone-screenshot {
-        max-width: 95vw;
+        max-width: 110vw;
         max-height: none;
         width: 100%;
         height: auto;
@@ -2828,7 +2836,7 @@ section {
 
     .hero-content {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 25px;
         align-items: center;
         display: flex;
         flex-direction: column;
@@ -2839,6 +2847,7 @@ section {
         order: 1;
         width: 100%;
         text-align: center;
+        padding: 0 16px;
     }
 
     .hero-title {
@@ -2861,17 +2870,19 @@ section {
         justify-content: center;
         align-items: center;
         width: 100%;
+        overflow: visible;
     }
 
     .hero-phone-mockup .image-container {
-        max-width: 95vw;
+        max-width: 110vw;
         max-height: none;
         width: auto;
         height: auto;
+        margin: 0 -5vw;
     }
 
     .hero-phone-mockup .phone-screenshot {
-        max-width: 95vw;
+        max-width: 110vw;
         max-height: none;
         width: 100%;
         height: auto;
