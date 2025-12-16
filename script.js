@@ -134,7 +134,7 @@ function animateValue(element, start, end, duration) {
 
 // FAQ Accordion functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // 404 Overlay - Show first, then reveal page
+    // 404 Overlay - Show first, user will remove manually
     const error404Overlay = document.getElementById('error404Overlay');
     const body = document.body;
     const mainContent = document.querySelector('.main-content');
@@ -142,20 +142,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (error404Overlay && mainContent) {
         // Hide main content initially
         body.classList.add('hiding-404');
-        
-        // Show 404 for 2.5 seconds, then fade out and reveal page
-        setTimeout(() => {
-            error404Overlay.classList.add('hidden');
-            body.classList.remove('hiding-404');
-            body.classList.add('showing-content');
-            
-            // Remove overlay from DOM after animation
-            setTimeout(() => {
-                if (error404Overlay.parentNode) {
-                    error404Overlay.parentNode.removeChild(error404Overlay);
-                }
-            }, 800);
-        }, 2500);
     }
     
     // Initialize scroll animations
