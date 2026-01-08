@@ -134,16 +134,6 @@ function animateValue(element, start, end, duration) {
 
 // FAQ Accordion functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // 404 Overlay - Show first, user will remove manually
-    const error404Overlay = document.getElementById('error404Overlay');
-    const body = document.body;
-    const mainContent = document.querySelector('.main-content');
-    
-    if (error404Overlay && mainContent) {
-        // Hide main content initially
-        body.classList.add('hiding-404');
-    }
-    
     // Initialize scroll animations
     initScrollAnimations();
     
