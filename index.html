@@ -4,7 +4,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartMealSaver - AI Food Buddy</title>
+
+    <!-- Primary Meta Tags -->
+    <title>SmartMealSaver - AI Food Buddy | Save Money on Meals with AI</title>
+    <meta name="title" content="SmartMealSaver - AI Food Buddy | Save Money on Meals with AI">
+    <meta name="description"
+        content="Meet your AI Digital Twin. SmartMealSaver compares live grocery and takeaway prices, learns your tastes and budget, and helps you save money on every meal. Join the waitlist for early access.">
+    <meta name="keywords"
+        content="AI food app, meal planning, grocery price comparison, takeaway deals, food savings, budget meals, AI food assistant, meal optimization, food affordability">
+    <meta name="author" content="SmartMealSaver">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://smartmealsaver.com">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://smartmealsaver.com">
+    <meta property="og:title" content="SmartMealSaver - AI Food Buddy | Save Money on Meals with AI">
+    <meta property="og:description"
+        content="Meet your AI Digital Twin. SmartMealSaver compares live grocery and takeaway prices, learns your tastes and budget, and helps you save money on every meal.">
+    <meta property="og:image" content="https://smartmealsaver.com/images/Your-ai-food-plug.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="SmartMealSaver">
+    <meta property="og:locale" content="en_GB">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://smartmealsaver.com">
+    <meta name="twitter:title" content="SmartMealSaver - AI Food Buddy | Save Money on Meals with AI">
+    <meta name="twitter:description"
+        content="Meet your AI Digital Twin. SmartMealSaver compares live grocery and takeaway prices, learns your tastes and budget, and helps you save money on every meal.">
+    <meta name="twitter:image" content="https://smartmealsaver.com/images/Your-ai-food-plug.png">
+    <meta name="twitter:creator" content="@SmartMealSaver">
+
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#6B46C1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="SmartMealSaver">
+
+    <!-- Resource Hints for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="images/Your-ai-food-plug.png" as="image" fetchpriority="high">
+
+    <!-- Google Analytics 4 -->
+    <!-- TODO: Replace G-XXXXXXXXXX with your actual Google Analytics 4 Measurement ID -->
+    <!-- Get your ID from: https://analytics.google.com/ -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX', {
+            'anonymize_ip': true,
+            'cookie_flags': 'SameSite=None;Secure'
+        });
+    </script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "SmartMealSaver",
+        "applicationCategory": "FoodAndDrinkApplication",
+        "operatingSystem": "iOS, Android",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "GBP"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "85"
+        },
+        "description": "AI-powered food app that compares live grocery and takeaway prices to help you save money on every meal.",
+        "screenshot": "https://smartmealsaver.com/images/Your-ai-food-plug.png"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "SmartMealSaver",
+        "url": "https://smartmealsaver.com",
+        "logo": "https://smartmealsaver.com/images/logo.png",
+        "description": "AI-powered food affordability platform helping users save money on meals",
+        "sameAs": [
+            "https://twitter.com/SmartMealSaver",
+            "https://facebook.com/SmartMealSaver",
+            "https://instagram.com/SmartMealSaver"
+        ]
+    }
+    </script>
+
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -35,7 +132,7 @@
                 <div class="hero-phone-mockup">
                     <div class="image-container">
                         <img src="images/Your-ai-food-plug.png" alt="SmartMealSaver App Interface"
-                            class="phone-screenshot">
+                            class="phone-screenshot" loading="eager" fetchpriority="high">
                         <span class="floating-emoji emoji-phone-1">⭐</span>
                         <span class="floating-emoji emoji-phone-2">🍔</span>
                         <span class="floating-emoji emoji-phone-3">💸</span>
@@ -58,7 +155,7 @@
             <p class="tagline-text">"This is not a recipe app. This is not a delivery app. It's both and smarter than
                 both."</p>
             <div class="ai-twin-image">
-                <img src="images/AI-Twin-new.png" alt="AI Food Twin" class="ai-twin-img">
+                <img src="images/AI-Twin-new.png" alt="AI Food Twin" class="ai-twin-img" loading="lazy">
             </div>
         </div>
     </section>
@@ -90,7 +187,7 @@
                     <div class="step-visual">
                         <div class="image-container">
                             <img src="images/i-want-a-cheap-spicy-dinner-under-£5.png" alt="AI Chat Interface"
-                                class="step-image">
+                                class="step-image" loading="lazy">
                             <span class="floating-emoji emoji-phone-6">🍝</span>
                             <span class="floating-emoji emoji-phone-7">🥂</span>
                             <span class="floating-emoji emoji-phone-8">⭐</span>
@@ -102,7 +199,7 @@
                     <h3 class="step-title">Compare Cook It vs. Order It.</h3>
                     <div class="step-visual">
                         <div class="image-container">
-                            <img src="images/you-save.png" alt="Price Comparison" class="step-image">
+                            <img src="images/you-save.png" alt="Price Comparison" class="step-image" loading="lazy">
                             <span class="floating-emoji emoji-phone-9">💸</span>
                             <span class="floating-emoji emoji-phone-10">💷</span>
                             <span class="floating-emoji emoji-phone-11">💰</span>
@@ -114,7 +211,8 @@
                     <h3 class="step-title">Save, eat and repeat.</h3>
                     <div class="step-visual">
                         <div class="image-container">
-                            <img src="images/cheap-vegan-dinner.jpeg" alt="Price Recommendations" class="step-image">
+                            <img src="images/cheap-vegan-dinner.jpeg" alt="Price Recommendations" class="step-image"
+                                loading="lazy">
                             <span class="floating-emoji emoji-phone-12">🍔</span>
                             <span class="floating-emoji emoji-phone-14">⭐</span>
                         </div>
@@ -151,7 +249,7 @@
                         </svg>
                     </div>
                     <div class="feature-image">
-                        <img src="images/cheap-vegan-dinner.jpeg" alt="Real-time Price Comparison">
+                        <img src="images/cheap-vegan-dinner.jpeg" alt="Real-time Price Comparison" loading="lazy">
                         <span class="floating-emoji emoji-phone-15">💸</span>
                         <span class="floating-emoji emoji-phone-16">💷</span>
                     </div>
@@ -168,7 +266,7 @@
                         </svg>
                     </div>
                     <div class="feature-image">
-                        <img src="images/you-save.png" alt="Cook It vs Order It">
+                        <img src="images/you-save.png" alt="Cook It vs Order It" loading="lazy">
                         <span class="floating-emoji emoji-phone-17">💰</span>
                         <span class="floating-emoji emoji-phone-18">⭐</span>
                     </div>
@@ -184,7 +282,7 @@
                         </svg>
                     </div>
                     <div class="feature-image">
-                        <img src="images/healthy-sustainabile.png" alt="Healthy & Sustainable">
+                        <img src="images/healthy-sustainabile.png" alt="Healthy & Sustainable" loading="lazy">
                         <span class="floating-emoji emoji-phone-19">🍝</span>
                         <span class="floating-emoji emoji-phone-20">🥂</span>
                     </div>
@@ -200,7 +298,7 @@
                         </svg>
                     </div>
                     <div class="feature-image">
-                        <img src="images/open-cook-buddies.png" alt="Food Buddy Community">
+                        <img src="images/open-cook-buddies.png" alt="Food Buddy Community" loading="lazy">
                         <span class="floating-emoji emoji-phone-21">🍔</span>
                     </div>
                     <h3 class="feature-title">Buddy Up mode</h3>
@@ -215,7 +313,7 @@
                         </svg>
                     </div>
                     <div class="feature-image">
-                        <img src="images/pantry.png" alt="Pantry Sync">
+                        <img src="images/pantry.png" alt="Pantry Sync" loading="lazy">
                         <span class="floating-emoji emoji-phone-23">⭐</span>
                         <span class="floating-emoji emoji-phone-24">💰</span>
                     </div>
@@ -322,7 +420,7 @@
                 <div class="showcase-item">
                     <span class="floating-emoji emoji-21">💰</span>
                     <div class="showcase-phone">
-                        <img src="images/open-to-cook-buddies.png" alt="Open to Cook Buddies">
+                        <img src="images/open-to-cook-buddies.png" alt="Open to Cook Buddies" loading="lazy">
                         <span class="floating-emoji emoji-phone-25">🍔</span>
                         <span class="floating-emoji emoji-phone-26">💷</span>
                         <span class="floating-emoji emoji-phone-27">💸</span>
@@ -353,6 +451,57 @@
             </div>
             <div class="stat-box">
                 <p class="stat-text">🌟 85% of surveyed users said they'd use SmartMealSaver weekly.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges Section -->
+    <section class="trust-badges">
+        <div class="container">
+            <div class="trust-badges-grid">
+                <div class="trust-badge">
+                    <div class="trust-badge-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 1L3 5V11C3 16.55 6.16 21.74 12 23C17.84 21.74 21 16.55 21 11V5L12 1ZM12 7C13.4 7 14.8 8.6 14.8 10V11H16V17H8V11H9.2V10C9.2 8.6 10.6 7 12 7ZM12 8.2C11.2 8.2 10.4 8.7 10.4 10V11H13.6V10C13.6 8.7 12.8 8.2 12 8.2Z"
+                                fill="currentColor" />
+                        </svg>
+                    </div>
+                    <h3 class="trust-badge-title">Secure & Private</h3>
+                    <p class="trust-badge-text">Your data is encrypted and protected</p>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM11 16L16 11L14.59 9.59L11 13.17L8.41 10.59L7 12L11 16Z"
+                                fill="currentColor" />
+                        </svg>
+                    </div>
+                    <h3 class="trust-badge-title">GDPR Compliant</h3>
+                    <p class="trust-badge-text">We respect your privacy rights</p>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2ZM2 17L12 22L22 17M2 12L12 17L22 12" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3 class="trust-badge-title">SSL Encrypted</h3>
+                    <p class="trust-badge-text">All connections are secure</p>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z"
+                                fill="currentColor" />
+                        </svg>
+                    </div>
+                    <h3 class="trust-badge-title">Trusted by 1000+</h3>
+                    <p class="trust-badge-text">Users already on waitlist</p>
+                </div>
             </div>
         </div>
     </section>

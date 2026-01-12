@@ -83,6 +83,11 @@ function initScrollAnimations() {
     document.querySelectorAll('.stat-box').forEach(box => {
         observer.observe(box);
     });
+
+    // Observe trust badges
+    document.querySelectorAll('.trust-badge').forEach(badge => {
+        observer.observe(badge);
+    });
 }
 
 // Parallax effect for hero section
@@ -132,8 +137,136 @@ function animateValue(element, start, end, duration) {
     window.requestAnimationFrame(step);
 }
 
+// Analytics Tracking Functions
+function trackEvent(eventName, eventCategory, eventLabel, eventValue) {
+    // Google Analytics 4
+    if (typeof gtag !== 'undefined') {
+        gtag('event', eventName, {
+            'event_category': eventCategory,
+            'event_label': eventLabel,
+            'value': eventValue
+        });
+    }
+    
+    // Console log for debugging (remove in production)
+    console.log('Analytics Event:', {
+        event: eventName,
+        category: eventCategory,
+        label: eventLabel,
+        value: eventValue
+    });
+}
+
+function trackPageView(pageName) {
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'page_view', {
+            'page_title': pageName,
+            'page_location': window.location.href
+        });
+    }
+}
+
+function trackScrollDepth() {
+    let maxScroll = 0;
+    const scrollThresholds = [25, 50, 75, 90, 100];
+    const trackedThresholds = new Set();
+    
+    window.addEventListener('scroll', () => {
+        const scrollPercent = Math.round(
+            ((window.scrollY + window.innerHeight) / document.documentElement.scrollHeight) * 100
+        );
+        
+        if (scrollPercent > maxScroll) {
+            maxScroll = scrollPercent;
+            
+            scrollThresholds.forEach(threshold => {
+                if (scrollPercent >= threshold && !trackedThresholds.has(threshold)) {
+                    trackedThresholds.add(threshold);
+                    trackEvent('scroll_depth', 'Engagement', `${threshold}%`, threshold);
+                }
+            });
+        }
+    }, { passive: true });
+}
+
+function trackTimeOnPage() {
+    const startTime = Date.now();
+    
+    // Track time on page when user leaves
+    window.addEventListener('beforeunload', () => {
+        const timeOnPage = Math.round((Date.now() - startTime) / 1000);
+        trackEvent('time_on_page', 'Engagement', 'Page Visit', timeOnPage);
+    });
+    
+    // Track 30 second milestone
+    setTimeout(() => {
+        trackEvent('time_on_page', 'Engagement', '30 seconds', 30);
+    }, 30000);
+    
+    // Track 1 minute milestone
+    setTimeout(() => {
+        trackEvent('time_on_page', 'Engagement', '1 minute', 60);
+    }, 60000);
+}
+
+function trackSectionViews() {
+    const sections = document.querySelectorAll('section');
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const sectionName = entry.target.className || entry.target.id || 'Unknown Section';
+                trackEvent('section_view', 'Content', sectionName, null);
+                sectionObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+    
+    sections.forEach(section => {
+        sectionObserver.observe(section);
+    });
+}
+
+// Lazy Loading Image Handler
+function initLazyImages() {
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px'
+        });
+        
+        lazyImages.forEach(img => {
+            imageObserver.observe(img);
+        });
+    } else {
+        // Fallback for browsers without IntersectionObserver
+        lazyImages.forEach(img => {
+            img.classList.add('loaded');
+        });
+    }
+}
+
 // FAQ Accordion functionality
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Analytics Tracking
+    trackPageView('Landing Page');
+    trackScrollDepth();
+    trackTimeOnPage();
+    trackSectionViews();
+    
+    // Initialize lazy loading
+    initLazyImages();
+    
     // Initialize scroll animations
     initScrollAnimations();
     
@@ -146,6 +279,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         question.addEventListener('click', function() {
             const isActive = item.classList.contains('active');
+            const questionText = question.querySelector('span')?.textContent || 'Unknown Question';
             
             // Close all FAQ items
             faqItems.forEach(faqItem => {
@@ -155,6 +289,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // Open clicked item if it wasn't active
             if (!isActive) {
                 item.classList.add('active');
+                trackEvent('faq_open', 'Engagement', questionText, null);
+            } else {
+                trackEvent('faq_close', 'Engagement', questionText, null);
             }
         });
     });
@@ -168,6 +305,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Open modal when any "Join Waitlist" button is clicked
     joinWaitlistButtons.forEach(button => {
         button.addEventListener('click', function() {
+            const buttonLocation = button.closest('section')?.className || button.closest('header')?.className || 'Unknown';
+            trackEvent('waitlist_button_click', 'Conversion', buttonLocation, null);
             waitlistModal.classList.add('active');
             document.body.style.overflow = 'hidden'; // Prevent background scrolling
         });
@@ -186,6 +325,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Close modal when close button is clicked
     if (closeModalButton) {
         closeModalButton.addEventListener('click', function() {
+            trackEvent('modal_close', 'Engagement', 'Close Button', null);
             waitlistModal.classList.remove('active');
             document.body.style.overflow = ''; // Restore scrolling
         });
@@ -194,6 +334,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Close modal when overlay is clicked
     if (modalOverlay) {
         modalOverlay.addEventListener('click', function() {
+            trackEvent('modal_close', 'Engagement', 'Overlay Click', null);
             waitlistModal.classList.remove('active');
             document.body.style.overflow = ''; // Restore scrolling
         });
@@ -202,6 +343,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Close modal on Escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && waitlistModal.classList.contains('active')) {
+            trackEvent('modal_close', 'Engagement', 'Escape Key', null);
             waitlistModal.classList.remove('active');
             document.body.style.overflow = ''; // Restore scrolling
         }
@@ -212,11 +354,17 @@ document.addEventListener('DOMContentLoaded', function() {
     if (waitlistForm) {
         waitlistForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            const email = this.querySelector('.email-input').value;
+            const emailInput = this.querySelector('#waitlist-email') || this.querySelector('.waitlist-email-input');
+            const email = emailInput ? emailInput.value : '';
+            
+            // Track form submission
+            trackEvent('waitlist_signup', 'Conversion', 'Form Submission', null);
             
             // Here you would typically send the email to your backend
             alert('Thank you for joining the waitlist! We\'ll be in touch soon.');
-            this.querySelector('.email-input').value = '';
+            if (emailInput) {
+                emailInput.value = '';
+            }
             
             // Close modal after submission
             waitlistModal.classList.remove('active');

@@ -606,6 +606,8 @@ body::before {
     display: flex;
     flex-direction: column;
     gap: 24px;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .hero-title {
@@ -643,10 +645,10 @@ body::before {
     grid-column: 2;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     animation: fadeInUp 1.2s ease-out 0.7s both;
     padding: 0 20px;
-    margin-top: 60px;
+    margin-top: 0;
 }
 
 .image-container {
@@ -685,6 +687,16 @@ body::before {
     background: transparent;
     padding: 0;
     border-radius: 0;
+}
+
+/* Image Loading Optimization */
+img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+
+img[loading="lazy"].loaded {
+    opacity: 1;
 }
 
 .phone-screenshot {
@@ -1837,6 +1849,105 @@ section {
 
 .business-model .container {
     position: relative;
+}
+
+/* Trust Badges */
+.trust-badges {
+    background-color: transparent;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 0;
+}
+
+.trust-badges .container {
+    position: relative;
+}
+
+.trust-badges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 32px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.trust-badge {
+    background-color: var(--pink-light);
+    padding: 32px 24px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.trust-badge.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.trust-badge:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.trust-badge:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.trust-badge:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.trust-badge:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.trust-badge:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(236, 72, 153, 0.3);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.trust-badge-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.trust-badge-icon svg {
+    width: 32px;
+    height: 32px;
+    color: var(--purple-dark);
+}
+
+.trust-badge:hover .trust-badge-icon {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
+.trust-badge-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--purple-dark);
+    margin-bottom: 8px;
+}
+
+.trust-badge-text {
+    font-size: 14px;
+    color: var(--purple-dark);
+    opacity: 0.8;
+    margin: 0;
+    line-height: 1.5;
 }
 
 /* Waitlist */
@@ -3035,6 +3146,38 @@ section {
         font-size: 1.5rem !important;
     }
 
+    .trust-badges {
+        padding: 40px 0;
+    }
+
+    .trust-badges-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .trust-badge {
+        padding: 24px 20px;
+    }
+
+    .trust-badge-icon {
+        width: 56px;
+        height: 56px;
+        margin-bottom: 16px;
+    }
+
+    .trust-badge-icon svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .trust-badge-title {
+        font-size: 18px;
+    }
+
+    .trust-badge-text {
+        font-size: 13px;
+    }
+
     .waitlist-modal-content {
         max-width: 95%;
         padding: 0;
@@ -3284,6 +3427,33 @@ section {
 
     .savings {
         font-size: 11px;
+    }
+
+    .trust-badges-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .trust-badge {
+        padding: 20px 16px;
+    }
+
+    .trust-badge-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .trust-badge-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .trust-badge-title {
+        font-size: 16px;
+    }
+
+    .trust-badge-text {
+        font-size: 12px;
     }
 
     .ai-food-twin .container {
