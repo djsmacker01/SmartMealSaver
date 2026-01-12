@@ -3393,6 +3393,18 @@ section {
     .faq-item.active .faq-answer {
         padding: 16px 0 0 0;
     }
+
+    .footer-accessibility {
+        margin-top: 20px;
+        padding-top: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .footer-accessibility p {
+        font-size: 13px;
+        line-height: 1.6;
+    }
 }
 
 @media (max-width: 480px) {
@@ -3609,6 +3621,18 @@ section {
     .stat-text {
         font-size: 16px;
     }
+
+    .footer-accessibility {
+        margin-top: 20px;
+        padding-top: 20px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .footer-accessibility p {
+        font-size: 12px;
+        line-height: 1.6;
+    }
 }
 
 @media (max-width: 360px) {
@@ -3636,5 +3660,15 @@ section {
 
     .stat-text {
         font-size: 15px;
+    }
+
+    .footer-accessibility {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .footer-accessibility p {
+        font-size: 11px;
+        line-height: 1.6;
     }
 }
