@@ -276,22 +276,48 @@ document.addEventListener('DOMContentLoaded', function() {
     
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
         
-        question.addEventListener('click', function() {
+        if (!question || !answer) return;
+        
+        function toggleFAQ() {
             const isActive = item.classList.contains('active');
             const questionText = question.querySelector('span')?.textContent || 'Unknown Question';
             
             // Close all FAQ items
             faqItems.forEach(faqItem => {
                 faqItem.classList.remove('active');
+                const faqQuestion = faqItem.querySelector('.faq-question');
+                const faqAnswer = faqItem.querySelector('.faq-answer');
+                if (faqQuestion) {
+                    faqQuestion.setAttribute('aria-expanded', 'false');
+                }
+                if (faqAnswer) {
+                    faqAnswer.setAttribute('aria-hidden', 'true');
+                }
             });
             
             // Open clicked item if it wasn't active
             if (!isActive) {
                 item.classList.add('active');
+                question.setAttribute('aria-expanded', 'true');
+                answer.setAttribute('aria-hidden', 'false');
                 trackEvent('faq_open', 'Engagement', questionText, null);
             } else {
+                question.setAttribute('aria-expanded', 'false');
+                answer.setAttribute('aria-hidden', 'true');
                 trackEvent('faq_close', 'Engagement', questionText, null);
+            }
+        }
+        
+        // Click handler
+        question.addEventListener('click', toggleFAQ);
+        
+        // Keyboard handler (Enter and Space)
+        question.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleFAQ();
             }
         });
     });
