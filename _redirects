@@ -1,0 +1,11 @@
+# Netlify Redirects File
+# This file handles URL redirects and rewrites
+
+# Force HTTPS (Netlify does this automatically, but explicit is good)
+# https://smartmealsaver.ai/*  https://smartmealsaver.ai/:splat  301!
+
+# If you want to redirect www to non-www (or vice versa), uncomment:
+# https://www.smartmealsaver.ai/*  https://smartmealsaver.ai/:splat  301!
+
+# Custom 404 page (if you create one later)
+# /404.html  404

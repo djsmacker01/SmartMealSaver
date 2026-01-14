@@ -148,13 +148,14 @@ function trackEvent(eventName, eventCategory, eventLabel, eventValue) {
         });
     }
     
-    // Console log for debugging (remove in production)
-    console.log('Analytics Event:', {
-        event: eventName,
-        category: eventCategory,
-        label: eventLabel,
-        value: eventValue
-    });
+    // Console log for debugging (disabled in production)
+    // Uncomment below for debugging:
+    // console.log('Analytics Event:', {
+    //     event: eventName,
+    //     category: eventCategory,
+    //     label: eventLabel,
+    //     value: eventValue
+    // });
 }
 
 function trackPageView(pageName) {

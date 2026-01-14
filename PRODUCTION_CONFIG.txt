@@ -1,0 +1,53 @@
+================================================================================
+SMARTMEALSAVER - PRODUCTION CONFIGURATION
+================================================================================
+
+BEFORE DEPLOYING, UPDATE THESE VALUES IN index.html:
+
+1. YOUR DOMAIN NAME
+   ✅ COMPLETED: Updated to https://smartmealsaver.ai
+   
+   All URLs have been updated in:
+   - Line 17: Canonical URL
+   - Line 21: Open Graph URL
+   - Line 25: Open Graph image URL
+   - Line 33: Twitter Card URL
+   - Line 37: Twitter Card image URL
+   - Line 85: Structured data screenshot
+   - Line 94: Organization URL
+   - Line 95: Organization logo
+
+2. GOOGLE ANALYTICS 4 ID
+   Current placeholder: G-XXXXXXXXXX
+   Get your ID from: https://analytics.google.com/
+   
+   Line 55:  <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR-GA4-ID-HERE"></script>
+   Line 60:  gtag('config', 'YOUR-GA4-ID-HERE', {
+
+================================================================================
+QUICK CHECKLIST:
+================================================================================
+
+[✅] Update domain name in all 8 locations in index.html (COMPLETED)
+[ ] Get Google Analytics 4 ID and update in 2 locations
+[ ] Verify all images are in the images/ folder
+[ ] Test locally before deploying
+[ ] Upload all files to hosting
+[ ] Configure SSL/HTTPS
+[ ] Test live site
+[ ] Submit to Google Search Console
+[ ] Test social sharing (Facebook, Twitter)
+
+================================================================================
+FILES TO UPLOAD:
+================================================================================
+
+Required files:
+- index.html
+- terms.html
+- policies.html
+- styles.css
+- script.js
+- images/ (entire folder with all images)
+
+================================================================================
