@@ -2145,6 +2145,67 @@ section {
     font-weight: 600;
 }
 
+.waitlist-step-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 16px 0;
+}
+
+.waitlist-legal {
+    margin-top: 14px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(17, 24, 39, 0.7);
+}
+
+.waitlist-select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    font-size: 16px;
+    background: #fff;
+    margin-bottom: 16px;
+}
+
+.waitlist-fieldset {
+    border: 0;
+    padding: 0;
+    margin: 16px 0;
+}
+
+.waitlist-legend {
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 10px;
+}
+
+.waitlist-choice {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 16px;
+    color: #111827;
+    margin: 10px 0;
+}
+
+.waitlist-choice input {
+    margin-top: 3px;
+}
+
+.waitlist-step-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.waitlist-skip-btn {
+    cursor: pointer;
+}
+
 .waitlist-modal-title {
     font-size: 48px;
     font-weight: 700;

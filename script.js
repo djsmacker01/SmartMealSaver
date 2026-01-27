@@ -329,6 +329,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeModalButton = document.querySelector('.waitlist-modal-close');
     const modalOverlay = document.querySelector('.waitlist-modal-overlay');
     const waitlistSuccessBanner = waitlistModal ? waitlistModal.querySelector('.waitlist-success') : null;
+    const waitlistStep1 = waitlistModal ? waitlistModal.querySelector('.waitlist-form-step1') : null;
+    const waitlistStep2 = waitlistModal ? waitlistModal.querySelector('.waitlist-form-step2') : null;
+    const waitlistSkipBtn = waitlistModal ? waitlistModal.querySelector('.waitlist-skip-btn') : null;
+    const profileEmail = waitlistModal ? waitlistModal.querySelector('#profile-email') : null;
+    const profileFirstName = waitlistModal ? waitlistModal.querySelector('#profile-first-name') : null;
     
     // Open modal when any "Join Waitlist" button is clicked
     joinWaitlistButtons.forEach(button => {
@@ -337,6 +342,9 @@ document.addEventListener('DOMContentLoaded', function() {
             trackEvent('waitlist_button_click', 'Conversion', buttonLocation, null);
             waitlistModal.classList.add('active');
             document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            if (waitlistStep1) waitlistStep1.hidden = false;
+            if (waitlistStep2) waitlistStep2.hidden = true;
+            if (waitlistSuccessBanner) waitlistSuccessBanner.hidden = true;
         });
     });
     
@@ -383,7 +391,34 @@ document.addEventListener('DOMContentLoaded', function() {
         waitlistForm.addEventListener('submit', function(e) {
             // Track form submission
             trackEvent('waitlist_signup', 'Conversion', 'Form Submission', null);
+            // Persist step-1 values so we can prefill step 2 after redirect
+            const emailInput = this.querySelector('#waitlist-email');
+            const firstNameInput = this.querySelector('#waitlist-first-name');
+            if (emailInput && firstNameInput) {
+                try {
+                    sessionStorage.setItem('waitlist_email', emailInput.value || '');
+                    sessionStorage.setItem('waitlist_first_name', firstNameInput.value || '');
+                } catch (_) {
+                    // no-op
+                }
+            }
             // Allow normal form submission (Netlify Forms will handle it)
+        });
+    }
+
+    // Step 2 submission tracking (optional form)
+    if (waitlistStep2) {
+        waitlistStep2.addEventListener('submit', function() {
+            trackEvent('waitlist_profile_submit', 'Conversion', 'Profile Submission', null);
+        });
+    }
+
+    // Skip step 2
+    if (waitlistSkipBtn) {
+        waitlistSkipBtn.addEventListener('click', function() {
+            trackEvent('waitlist_profile_skip', 'Engagement', 'Skip Personalisation', null);
+            waitlistModal.classList.remove('active');
+            document.body.style.overflow = '';
         });
     }
 
@@ -391,13 +426,39 @@ document.addEventListener('DOMContentLoaded', function() {
     try {
         const url = new URL(window.location.href);
         const isWaitlistSuccess = url.searchParams.get('waitlist') === 'success';
+        const isWaitlistProfile = url.searchParams.get('waitlist') === 'profile';
         if (isWaitlistSuccess && waitlistModal) {
             waitlistModal.classList.add('active');
             document.body.style.overflow = 'hidden';
             if (waitlistSuccessBanner) {
                 waitlistSuccessBanner.hidden = false;
             }
+            // Show step 2 (optional) and hide step 1
+            if (waitlistStep1) waitlistStep1.hidden = true;
+            if (waitlistStep2) waitlistStep2.hidden = false;
+
+            // Prefill carry-over fields for step 2
+            try {
+                const savedEmail = sessionStorage.getItem('waitlist_email') || '';
+                const savedFirstName = sessionStorage.getItem('waitlist_first_name') || '';
+                if (profileEmail) profileEmail.value = savedEmail;
+                if (profileFirstName) profileFirstName.value = savedFirstName;
+            } catch (_) {
+                // no-op
+            }
             // Remove query param to avoid showing again on refresh
+            url.searchParams.delete('waitlist');
+            window.history.replaceState({}, '', url.toString());
+        } else if (isWaitlistProfile && waitlistModal) {
+            // After step 2, show a simple success state in the modal (no extra page needed)
+            waitlistModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            if (waitlistSuccessBanner) {
+                waitlistSuccessBanner.textContent = "Thanks — you're all set.";
+                waitlistSuccessBanner.hidden = false;
+            }
+            if (waitlistStep1) waitlistStep1.hidden = true;
+            if (waitlistStep2) waitlistStep2.hidden = true;
             url.searchParams.delete('waitlist');
             window.history.replaceState({}, '', url.toString());
         }

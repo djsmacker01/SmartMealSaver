@@ -552,19 +552,104 @@
                             what's in your pantry and join challenges for rewards.</p>
                     </div>
                 </div>
-                <form class="waitlist-form" name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field"
-                    action="/?waitlist=success">
+                <!-- Step 1: Quick Join (Netlify Form) -->
+                <form class="waitlist-form waitlist-form-step1" name="waitlist" method="POST" data-netlify="true"
+                    netlify-honeypot="bot-field" action="/?waitlist=success">
                     <input type="hidden" name="form-name" value="waitlist">
                     <p class="sr-only">
                         <label>Don’t fill this out if you're human: <input name="bot-field"></label>
                     </p>
+
                     <div class="waitlist-success" role="status" aria-live="polite" hidden>
-                        Thanks — you're on the waitlist. We'll be in touch soon.
+                        Thanks — you're on the waitlist. Want to personalise your experience?
                     </div>
+
                     <label for="waitlist-email" class="waitlist-email-label">Email address</label>
                     <input type="email" id="waitlist-email" name="email" placeholder="you@example.com"
                         class="waitlist-email-input" autocomplete="email" required>
+
+                    <label for="waitlist-first-name" class="waitlist-email-label">First name</label>
+                    <input type="text" id="waitlist-first-name" name="first_name" placeholder="Your first name"
+                        class="waitlist-email-input" autocomplete="given-name" required>
+
                     <button type="submit" class="waitlist-submit-btn">Join the Waitlist</button>
+
+                    <p class="waitlist-legal">
+                        By joining the waitlist, you agree to receive product updates from SmartMealSaver. You can unsubscribe
+                        at any time. Your data is protected and never sold.
+                    </p>
+                </form>
+
+                <!-- Step 2: Optional Personalisation (Netlify Form) -->
+                <form class="waitlist-form waitlist-form-step2" name="waitlist-profile" method="POST" data-netlify="true"
+                    netlify-honeypot="bot-field-profile" action="/?waitlist=profile" hidden>
+                    <input type="hidden" name="form-name" value="waitlist-profile">
+                    <p class="sr-only">
+                        <label>Don’t fill this out if you're human: <input name="bot-field-profile"></label>
+                    </p>
+
+                    <!-- Carry-over fields so you can match Step 2 to Step 1 -->
+                    <input type="hidden" name="email" id="profile-email">
+                    <input type="hidden" name="first_name" id="profile-first-name">
+
+                    <h3 class="waitlist-step-title">Help us personalise your experience</h3>
+
+                    <label for="profile-location" class="waitlist-email-label">Location (City / Country)</label>
+                    <input type="text" id="profile-location" name="location" placeholder="e.g. London, UK"
+                        class="waitlist-email-input" autocomplete="address-level2">
+
+                    <label for="profile-user-type" class="waitlist-email-label">User type</label>
+                    <select id="profile-user-type" name="user_type" class="waitlist-select">
+                        <option value="" selected>Choose one</option>
+                        <option value="Student">Student</option>
+                        <option value="Young Professional">Young Professional</option>
+                        <option value="Family">Family</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                    <fieldset class="waitlist-fieldset">
+                        <legend class="waitlist-legend">Main goal with SmartMealSaver (select all that apply)</legend>
+                        <label class="waitlist-choice"><input type="checkbox" name="main_goal[]" value="Save money"> Save money</label>
+                        <label class="waitlist-choice"><input type="checkbox" name="main_goal[]" value="Eat healthier"> Eat healthier</label>
+                        <label class="waitlist-choice"><input type="checkbox" name="main_goal[]" value="Save time"> Save time</label>
+                        <label class="waitlist-choice"><input type="checkbox" name="main_goal[]" value="Reduce food waste"> Reduce food waste</label>
+                        <label class="waitlist-choice"><input type="checkbox" name="main_goal[]" value="All of the above"> All of the above</label>
+                    </fieldset>
+
+                    <fieldset class="waitlist-fieldset">
+                        <legend class="waitlist-legend">How do you usually eat?</legend>
+                        <label class="waitlist-choice"><input type="radio" name="usual_eating" value="Mostly cook"> Mostly cook</label>
+                        <label class="waitlist-choice"><input type="radio" name="usual_eating" value="Mostly order"> Mostly order</label>
+                        <label class="waitlist-choice"><input type="radio" name="usual_eating" value="Mix of both"> Mix of both</label>
+                    </fieldset>
+
+                    <fieldset class="waitlist-fieldset">
+                        <legend class="waitlist-legend">Would you like early beta access?</legend>
+                        <label class="waitlist-choice"><input type="radio" name="beta_access" value="Yes"> Yes</label>
+                        <label class="waitlist-choice"><input type="radio" name="beta_access" value="No"> No</label>
+                    </fieldset>
+
+                    <fieldset class="waitlist-fieldset">
+                        <legend class="waitlist-legend">Monthly food spend range</legend>
+                        <label class="waitlist-choice"><input type="radio" name="monthly_spend" value="£0–£150"> £0–£150</label>
+                        <label class="waitlist-choice"><input type="radio" name="monthly_spend" value="£150–£300"> £150–£300</label>
+                        <label class="waitlist-choice"><input type="radio" name="monthly_spend" value="£300–£500"> £300–£500</label>
+                        <label class="waitlist-choice"><input type="radio" name="monthly_spend" value="£500+"> £500+</label>
+                    </fieldset>
+
+                    <label for="profile-referral" class="waitlist-email-label">Referral code (optional)</label>
+                    <input type="text" id="profile-referral" name="referral_code" placeholder="If you have one"
+                        class="waitlist-email-input" autocomplete="off">
+
+                    <div class="waitlist-step-actions">
+                        <button type="submit" class="waitlist-submit-btn">Save & Continue</button>
+                        <button type="button" class="btn-secondary waitlist-skip-btn">Skip for now</button>
+                    </div>
+
+                    <p class="waitlist-legal">
+                        By submitting, you agree to receive product updates from SmartMealSaver. You can unsubscribe at any time.
+                        Your data is protected and never sold.
+                    </p>
                 </form>
                 <div class="waitlist-modal-footer">
                     <p>© 2025 SmartMealSaver. All rights reserved.</p>
