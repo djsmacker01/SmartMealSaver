@@ -2135,6 +2135,16 @@ section {
     margin-bottom: 0;
 }
 
+.waitlist-success {
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    color: #065f46;
+    padding: 14px 16px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
 .waitlist-modal-title {
     font-size: 48px;
     font-weight: 700;

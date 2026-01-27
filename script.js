@@ -328,6 +328,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const joinWaitlistButtons = document.querySelectorAll('.join-waitlist-btn');
     const closeModalButton = document.querySelector('.waitlist-modal-close');
     const modalOverlay = document.querySelector('.waitlist-modal-overlay');
+    const waitlistSuccessBanner = waitlistModal ? waitlistModal.querySelector('.waitlist-success') : null;
     
     // Open modal when any "Join Waitlist" button is clicked
     joinWaitlistButtons.forEach(button => {
@@ -384,6 +385,24 @@ document.addEventListener('DOMContentLoaded', function() {
             trackEvent('waitlist_signup', 'Conversion', 'Form Submission', null);
             // Allow normal form submission (Netlify Forms will handle it)
         });
+    }
+
+    // If redirected back with success flag, show success message
+    try {
+        const url = new URL(window.location.href);
+        const isWaitlistSuccess = url.searchParams.get('waitlist') === 'success';
+        if (isWaitlistSuccess && waitlistModal) {
+            waitlistModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            if (waitlistSuccessBanner) {
+                waitlistSuccessBanner.hidden = false;
+            }
+            // Remove query param to avoid showing again on refresh
+            url.searchParams.delete('waitlist');
+            window.history.replaceState({}, '', url.toString());
+        }
+    } catch (_) {
+        // no-op
     }
     
     // Smooth scrolling for anchor links
