@@ -380,22 +380,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const waitlistForm = document.querySelector('.waitlist-form');
     if (waitlistForm) {
         waitlistForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const emailInput = this.querySelector('#waitlist-email') || this.querySelector('.waitlist-email-input');
-            const email = emailInput ? emailInput.value : '';
-            
             // Track form submission
             trackEvent('waitlist_signup', 'Conversion', 'Form Submission', null);
-            
-            // Here you would typically send the email to your backend
-            alert('Thank you for joining the waitlist! We\'ll be in touch soon.');
-            if (emailInput) {
-                emailInput.value = '';
-            }
-            
-            // Close modal after submission
-            waitlistModal.classList.remove('active');
-            document.body.style.overflow = ''; // Restore scrolling
+            // Allow normal form submission (Netlify Forms will handle it)
         });
     }
     

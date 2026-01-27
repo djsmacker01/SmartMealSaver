@@ -552,10 +552,15 @@
                             what's in your pantry and join challenges for rewards.</p>
                     </div>
                 </div>
-                <form class="waitlist-form">
+                <form class="waitlist-form" name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+                    action="/thank-you.html">
+                    <input type="hidden" name="form-name" value="waitlist">
+                    <p class="sr-only">
+                        <label>Don’t fill this out if you're human: <input name="bot-field"></label>
+                    </p>
                     <label for="waitlist-email" class="waitlist-email-label">Email address</label>
-                    <input type="email" id="waitlist-email" placeholder="you@example.com" class="waitlist-email-input"
-                        required>
+                    <input type="email" id="waitlist-email" name="email" placeholder="you@example.com"
+                        class="waitlist-email-input" autocomplete="email" required>
                     <button type="submit" class="waitlist-submit-btn">Join the Waitlist</button>
                 </form>
                 <div class="waitlist-modal-footer">
