@@ -335,16 +335,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const profileEmail = waitlistModal ? waitlistModal.querySelector('#profile-email') : null;
     const profileFirstName = waitlistModal ? waitlistModal.querySelector('#profile-first-name') : null;
     
+    function openWaitlistModal(resetToStep1 = true, trackingLabel = 'Unknown') {
+        if (!waitlistModal) return;
+        waitlistModal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        
+        if (resetToStep1) {
+            if (waitlistStep1) waitlistStep1.hidden = false;
+            if (waitlistStep2) waitlistStep2.hidden = true;
+            if (waitlistSuccessBanner) waitlistSuccessBanner.hidden = true;
+        }
+        
+        // Tracking
+        trackEvent('waitlist_modal_open', 'Engagement', trackingLabel, null);
+    }
+    
     // Open modal when any "Join Waitlist" button is clicked
     joinWaitlistButtons.forEach(button => {
         button.addEventListener('click', function() {
             const buttonLocation = button.closest('section')?.className || button.closest('header')?.className || 'Unknown';
             trackEvent('waitlist_button_click', 'Conversion', buttonLocation, null);
-            waitlistModal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-            if (waitlistStep1) waitlistStep1.hidden = false;
-            if (waitlistStep2) waitlistStep2.hidden = true;
-            if (waitlistSuccessBanner) waitlistSuccessBanner.hidden = true;
+            openWaitlistModal(true, `join_waitlist:${buttonLocation}`);
         });
     });
     
@@ -353,8 +364,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactUsLink) {
         contactUsLink.addEventListener('click', function(e) {
             e.preventDefault();
-            waitlistModal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            openWaitlistModal(true, 'contact_us');
         });
     }
     
